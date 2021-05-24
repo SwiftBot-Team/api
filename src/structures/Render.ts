@@ -10,7 +10,7 @@ export default class Render {
   async render() {
     const { page, browser } = await this.getPage();
 
-    await page.setViewport({ width: 800, height: 600 });
+    await page.setViewport({ width: 1920, height: 1080 });
     await page.goto(this.url, { waitUntil: 'load', timeout: 0 });
 
     const screenshot = await page.screenshot({ type: 'jpeg' });
