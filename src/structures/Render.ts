@@ -22,7 +22,7 @@ export default class Render {
 
   private async getPage() {
     const browser = await puppeteer.launch({
-      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      args: ['--no-sandbox', '--disable-setuid-sandbox', '--lang=PT-BR,pt-br'],
       ignoreDefaultArgs: ['--disable-extensions'],
     });
 
