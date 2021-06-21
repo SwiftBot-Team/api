@@ -11,7 +11,7 @@ export default class Render {
     const { page, browser } = await this.getPage();
 
     await page.setViewport({ width: 1920, height: 1080 });
-    await page.goto(this.url, { waitUntil: 'load', timeout: 0 });
+    await page.goto(this.url, { waitUntil: 'networkidle2', timeout: 0 });
 
     const screenshot = await page.screenshot({ type: 'jpeg' });
 
