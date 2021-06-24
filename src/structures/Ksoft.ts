@@ -22,7 +22,9 @@ export default class Ksoft {
 
         let q = new URLSearchParams(params);
 
-        return axios.get(this.BASE_URL, {
+        console.log(this.BASE_URL + `/lyrics/search?${q}`);
+
+        return axios.get(this.BASE_URL + `/lyrics/search?${q}`, {
             headers: {
                 Authorization: `Bearer ${this.token}`
             }
