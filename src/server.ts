@@ -50,8 +50,12 @@ yw.on('notified', video => {
 });
 
 yw.on('error', err => console.log(err));
- 
+
+yw.on('start', () => console.log('YOUTUBE INICIAO'));
+
 yw.start();
+
+
 
 app.listen(process.env.PORT || 3333, () => {
   log('🚀  Server started');
