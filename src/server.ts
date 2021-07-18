@@ -42,6 +42,7 @@ yw.on('start', () => {
   'UC_Etf-z_aXrwRUDjqkxk8Lw'
 ];
  
+    console.log('YOUTUBE INICIADO PRIMEUIRO')
     yw.watch(channels);
 });
  
@@ -52,6 +53,7 @@ yw.on('notified', video => {
 yw.on('error', err => console.log(err));
 
 yw.on('start', () => console.log('YOUTUBE INICIAO'));
+yw.on('stop', () => console.log('YOUTUBE STOP'));
 
 yw.start();
 
