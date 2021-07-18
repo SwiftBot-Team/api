@@ -4,15 +4,26 @@ import app from './app';
 
 require('dotenv/config');
 
-const YouTubeWatch = require('youtube-watch');
-
-const yw = new YouTubeWatch({
-    hubCallback: 'https://swiftbotnovo.herokuapp.com/',
-    hubPort: 2222,
+const YouTubeNotifier = require('youtube-notification');
+ 
+const notifier = new YouTubeNotifier({
+  hubCallback: 'https://swiftbotnovo.herokuapp.com/',
+  port: 8080,
+  secret: 'Something',
+  path: '/youtube'
+});
+notifier.setup();
+ 
+notifier.on('notified', data => {
+  console.log('New Video');
+  console.log(
+    `${data.channel.name} just uploaded a new video titled: ${data.video.title}`
+  );
 });
  
-yw.on('start', () => {
-    let channels = [
+notifier.subscribe('channel_1');
+ 
+[
   'UCjBO43ykxlSs3j7F7EXcBUQ',
   'UCU5JicSrEM5A63jkJ2QvGYw',
   'UCV306eHqgo0LvBf3Mh36AHg',
@@ -40,22 +51,7 @@ yw.on('start', () => {
   '849315502237155369',
   '849316163221848125',
   'UC_Etf-z_aXrwRUDjqkxk8Lw'
-];
- 
-    console.log('YOUTUBE INICIADO PRIMEUIRO')
-    yw.watch(channels);
-});
- 
-yw.on('notified', video => {
-    console.log(`${video.author} just uploaded a new video titled: ${video.title}`);
-});
-
-yw.on('error', err => console.log(err));
-
-yw.on('start', () => console.log('YOUTUBE INICIAO'));
-yw.on('stop', () => console.log('YOUTUBE STOP'));
-
-yw.start();
+].forEach(c => notifier.subscribe(c))
 
 
 
